@@ -17,7 +17,12 @@ _count_max_freq:
   ;; rdi => char* (string)
   ;; rsi => char*
 
+  push r12
+  push r13
+  push r14
+  push r15
   xor r15, r15
+
   ;; Reset array to 0 (Maybe there is another call to this function)
   @loop:
       mov r14, repetition
@@ -29,7 +34,6 @@ _count_max_freq:
  ;; indexing
   xor r11, r11
   xor r12, r12
-  ;; TODO: Push this into the stack zzzz
   xor r13, r13
   xor r14, r14
   xor r15, r15
@@ -69,5 +73,8 @@ _count_max_freq:
     jmp start
   
   end:
-    ;; ! TODO: Pop here out of the stack
+      pop r15
+      pop r14
+      pop r13
+      pop r12
     ret 

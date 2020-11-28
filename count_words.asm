@@ -8,6 +8,8 @@ section .text
 global _count_words
 
 _is_included:
+  push r14
+  push 15
   xor r14, r14
   mov r9, _separators
   mov [r9],   byte ' '
@@ -28,15 +30,21 @@ _is_included:
 
   @not_included:
     xor rax, rax
+    pop r15
+    pop r14
     ret
   @included:
+    pop r15
+    pop r14
     mov rax, 1
     ret
 
 _count_words:  
   ;; rdi => char* (string)
   xor r10, r10 ;; idx
-  mov r12, 1 ;; last character
+  push r12 
+  push r13
+  mov r12, 1
   xor r13, r13;; count  
   @loop:
     xor rax, rax
@@ -59,4 +67,6 @@ _count_words:
 
   @end:
     mov rax, r13
+    pop r13
+    pop r12
     ret    
