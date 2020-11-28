@@ -9,7 +9,7 @@ global _count_words
 
 _is_included:
   push r14
-  push 15
+  push r15
   xor r14, r14
   mov r9, _separators
   mov [r9],   byte ' '
@@ -41,7 +41,7 @@ _is_included:
 
 _count_words:  
   ;; rdi => char* (string)
-  xor r10, r10 ;; idx
+  xor r10, r10 ;; 1000000110 100101010010 010110101010
   push r12 
   push r13
   mov r12, 1
