@@ -9,6 +9,8 @@ int main()
 {
   char str[MAX_CHARS];
   fgets(str, MAX_CHARS, stdin);
+  // Delete \n
+  str[strlen(str) - 1] = 0;
   char letter = 0;
 
   // Get max frequent character
