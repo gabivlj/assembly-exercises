@@ -4,10 +4,12 @@
 #if __APPLE__
 extern int count_max_freq(char *array, char *c);
 extern int count_words(char *array);
+extern int str_length(char *array);
 #endif
 #if __linux__
 extern int _count_max_freq(char *array, char *c);
 extern int _count_words(char *array);
+extern int _str_length(char *array);
 
 int count_max_freq(char *array, char *c)
 {
@@ -17,6 +19,11 @@ int count_max_freq(char *array, char *c)
 int count_words(char *array)
 {
   return _count_words(array);
+}
+
+int str_length(char *array)
+{
+  return _str_length(array);
 }
 #endif
 
@@ -31,9 +38,11 @@ int main()
   char letter = 0;
 
   // Get max frequent character
-  int times = count_max_freq(str, &letter);
+  int times = _count_max_freq(str, &letter);
+
   printf("Most frequent character: `%c`. Frequency: %d times\n", letter, times);
 
-  // TODO: More exercises
-  printf("Number of words: `%d`\n", count_words(str));
+  printf("Number of words: `%d`\n", _count_words(str));
+
+  printf("Number of characters: `%d`\n ", _str_length(str));
 }
