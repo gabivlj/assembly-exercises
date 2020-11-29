@@ -39,6 +39,7 @@ int palindrome(char *array, int size)
 int main()
 {
   char str[MAX_CHARS];
+  printf("Please, type in some text >> ");
   fgets(str, MAX_CHARS, stdin);
   // Delete \n
   str[strlen(str) - 1] = 0;
