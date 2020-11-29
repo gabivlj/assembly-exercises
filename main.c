@@ -28,7 +28,7 @@ int str_length(char *array)
   return _str_length(array);
 }
 
-extern int palindrome(char *array, int size)
+int palindrome(char *array, int size)
 {
   return _palindrome(array, size);
 }
