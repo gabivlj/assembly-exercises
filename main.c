@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-extern int count_max_freq(char *array, char *c);
-extern int count_words(char *array);
+extern int _count_max_freq(char *array, char *c);
+extern int _count_words(char *array);
+extern int _str_length(char *array);
 
 #define MAX_CHARS 1000
 
@@ -14,9 +15,12 @@ int main()
   char letter = 0;
 
   // Get max frequent character
-  int times = count_max_freq(str, &letter);
+  int times = _count_max_freq(str, &letter);
   printf("Most frequent character: `%c`. Frequency: %d times\n", letter, times);
 
   // TODO: More exercises
-  printf("Number of words: `%d`\n", count_words(str));
+  printf("Number of words: `%d`\n", _count_words(str));
+
+  printf("Number of characters: `%d`\n ", _str_length(str));
+
 }
