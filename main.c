@@ -38,11 +38,11 @@ int main()
   char letter = 0;
 
   // Get max frequent character
-  int times = _count_max_freq(str, &letter);
+  int times = count_max_freq(str, &letter);
 
   printf("Most frequent character: `%c`. Frequency: %d times\n", letter, times);
 
-  printf("Number of words: `%d`\n", _count_words(str));
+  printf("Number of words: `%d`\n", count_words(str));
 
-  printf("Number of characters: `%d`\n ", _str_length(str));
+  printf("Number of characters: `%d`\n ", str_length(str));
 }
