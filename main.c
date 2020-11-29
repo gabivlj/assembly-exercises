@@ -1,7 +1,24 @@
 #include <stdio.h>
 #include <string.h>
+
+#if __APPLE__
 extern int count_max_freq(char *array, char *c);
 extern int count_words(char *array);
+#endif
+#if __linux__
+extern int _count_max_freq(char *array, char *c);
+extern int _count_words(char *array);
+
+int count_max_freq(char *array, char *c)
+{
+  return _count_max_freq(array, c);
+}
+
+int count_words(char *array)
+{
+  return _count_words(array);
+}
+#endif
 
 #define MAX_CHARS 1000
 
