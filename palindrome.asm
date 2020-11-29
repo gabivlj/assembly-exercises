@@ -2,19 +2,27 @@ section .text
     global _palindrome
 
 _palindrome:
-    xor     rax, rax    ;; clear whole rax register =>  (max iterations)
-    xor     rbx, rbx    ;; clear whole rbx register =>  (index)
-    mov     eax, rsi    ;; Dividend =>  move string length to eax 32-bit register
-    mov     ecx, 2      ;; Divisor =>   divide the string length by 2 in 32-bit integer division
-    div     ecx         ;; divide and store Quotioent in eax
+    xor     rcx, rcx    ;; clear whole rax register =>  (i)
+    xor     rbx, rbx    ;; clear whole rbx register =>  (j)
+    mov     rbx, rsi    ;; store length of array
 
     @_palindrome_loop:
-        cmp byte[rdi + rbx], byte[rdi + rsi - rbx - 1]
-        jne .palindrome_end
-        inc rbx
-        cmp rbx, rax
-        je ._palindrome_end
-        jmp @_palindrome_loop
+        mov     dl, byte[rdi + rbx - 1]
+        cmp     byte[rdi + rcx], dl
+        jne     .is_not_palindrome
+        inc     rcx
+        dec     rbx
+        cmp     rcx, rbx
+        jle     @_palindrome_loop
+        jmp     .is_palindrome
+
+    .is_palindrome:
+        mov     rax, 1
+        jmp     .palindrome_end
+
+    .is_not_palindrome:
+        mov     rax, 0
+        jmp     .palindrome_end
 
     .palindrome_end:
-    ret
+        ret
